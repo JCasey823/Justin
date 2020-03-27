@@ -26,7 +26,9 @@ public class IntLList extends IntList{
   }
 
   public void removeLast(){
-    try{
+    if(head == null){
+      return;
+    }else{
       Node pres = head;
       int c = 0;
       while(pres.next != null){
@@ -35,15 +37,13 @@ public class IntLList extends IntList{
       }
       remove(c);
       this.l--;
-    }catch(NullPointerException e){
-      System.out.println("NullPointerException");
     }
   }
 
 
   public int get(int index){
     Node pres = head;
-    index = index+1;
+    //index = index+1;
     for(int i = 0; i <= index-1; i++){
       pres = pres.next;
     }
@@ -52,29 +52,23 @@ public class IntLList extends IntList{
 
   public void set(int index, int val){
     Node pres = head;
-    int c = 0;
-      //index = index+1;
       if(index == 0){
         head.setValue(val);
       }else{
-      while(c != index){
-        pres = pres.next;
-        c++;
+        for(int i = 0; i < index; i++){
+          pres = pres.next;
       }
     pres.setValue(val);
   }
 }
 
   public void remove(int index) {
-    try{
       Node pres = head;
       Node temp = null;
-      //index = index + 1;
       if(index == 0){
         head = head.next;
         this.l--;
       }else{
-        //index = index+1;
         for(int c = 0; c < index-1; c++){
           pres = pres.next;
         }
@@ -83,9 +77,6 @@ public class IntLList extends IntList{
         //temp = null;
         this.l--;
       }
-    }catch(NullPointerException e){
-      System.out.println("Null Pointer Exception");
-    }
   }
 
   public String toString(){
@@ -105,9 +96,6 @@ public class IntLList extends IntList{
       }
 
     }
-
-    //pres = pres.next;
-    //str = str + String.valueOf(pres.getValue());
     str = "[" + str + "]";
     return str;
   }
@@ -117,48 +105,5 @@ public class IntLList extends IntList{
     this.l = 0;
 
   }
-  public static void main(String[] args){
-    IntLList link = new IntLList();
-    link.add(0);
-    link.add(1);
-    link.add(2);
-    link.add(3);
-    link.add(4);
-    link.add(5);
-    link.add(6);
-    link.add(7);
-    link.add(8);
-    link.add(9);
-    link.add(10);
-
-    link.remove(8);
-    //link.remove(9);
-    //link.add(27);
-    link.set(0,5);
-    //link.set(1,1001);
-    link.set(2,-1001);
-    //System.out.println(link.size());
-    System.out.println(link.toString());
-    //link.clear();
-    //link.add(27);
-    //link.remove(0);
-    //link.remove(2);
-    //link.remove(4);
-    //link.add(27);
-     //link.remove(2);
-    //link.removeLast();
-    //System.out.println(link.get(7));
-    //System.out.println(link.get(10));
-    //System.out.println(link.get(3));
-    //link.remove(0);
-    //link.add(7);
-    System.out.println(link.toString());
-    //System.out.println(link.get(0));
-    //System.out.println(link.isEmpty());
-    //link.clear();
-    //System.out.println(link.isEmpty());
-
-  }
-
 
 }
