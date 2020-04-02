@@ -1,1 +1,1 @@
-# Array amd Linked Lists 
+# Array and Linked Lists 
